@@ -1,5 +1,6 @@
 package com.springboot.hello.controller;
 
+import com.springboot.hello.domain.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -13,7 +14,7 @@ public class PostController {
         return "Hello Post API";
     }
 
-    @PostMapping
+    @PostMapping("/member")
     //어떤 타입의 데이터 값이 들어올지 모르므로 Object 타입으로 value 지정
     public String postMember(@RequestBody Map<String, Object> postData){
         StringBuilder sb = new StringBuilder();
@@ -21,5 +22,10 @@ public class PostController {
             sb.append(map.getKey() + " : " + map.getValue() + "\n");
         });
         return sb.toString();
+    }
+
+    @PostMapping("/member2")
+    public String postMember(@RequestBody MemberDto dto){
+        return dto.toString();
     }
 }
