@@ -1,6 +1,9 @@
 package com.springboot.hello.controller;
 
+import com.springboot.hello.domain.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/get-api")
@@ -30,4 +33,20 @@ public class HelloController {
     public String getRequestParam(@RequestParam String name, @RequestParam String email, @RequestParam String organization){
         return name + " " + email + " " + organization;
     }
+
+    @GetMapping("/request2")
+    public String getRequestParamByMap(@RequestParam Map<String, String> param){
+        StringBuilder sb = new StringBuilder();
+        param.entrySet().forEach(map ->{
+            sb.append(map.getKey() + " : " + map.getValue() + "\n");
+        });
+
+        return sb.toString();
+    }
+
+    @GetMapping("/request3")
+    public String getRequestparam(MemberDto memberDTO){
+        return memberDTO.toString();
+    }
+
 }
