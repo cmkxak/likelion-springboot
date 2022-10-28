@@ -9,7 +9,7 @@ import java.util.Map;
 
 @RestController
 public class UserController {
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public UserController(UserDao userDao) {
         this.userDao = userDao;

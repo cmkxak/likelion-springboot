@@ -8,8 +8,8 @@ import javax.sql.DataSource;
 
 @Repository
 public class UserDao {
-    private DataSource dataSource;
-    private JdbcTemplate jdbcTemlate;
+    private final DataSource dataSource;
+    private final JdbcTemplate jdbcTemlate;
 
     public UserDao(DataSource dataSource, JdbcTemplate jdbcTemlate) {
         this.dataSource = dataSource;
@@ -27,5 +27,4 @@ public class UserDao {
     public void deleteAll() {
         this.jdbcTemlate.update("delete from users;");
     }
-
 }
