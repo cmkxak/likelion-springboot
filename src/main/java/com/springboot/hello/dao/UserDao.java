@@ -20,11 +20,11 @@ public class UserDao {
         this.jdbcTemlate.update("insert into users values(?,?,?);", user.getId(), user.getName(), user.getPassword());
     }
 
-    public void delete(String id) {
-        this.jdbcTemlate.update("delete from users where id = ?", id);
+    public int delete(String id) {
+        return this.jdbcTemlate.update("delete from users where id = ?", id);
     }
 
-    public void deleteAll() {
-        this.jdbcTemlate.update("delete from users;");
+    public int deleteAll() {
+        return this.jdbcTemlate.update("delete from users");
     }
 }

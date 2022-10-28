@@ -2,10 +2,9 @@ package com.springboot.hello.controller;
 
 import com.springboot.hello.dao.UserDao;
 import com.springboot.hello.domain.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.sql.DataSource;
-import java.util.Map;
 
 @RestController
 public class UserController {
@@ -21,13 +20,17 @@ public class UserController {
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable String id){
-        userDao.delete(id);
+    public ResponseEntity<Integer> deleteUser(@PathVariable String id) {
+        return ResponseEntity
+                .ok()
+                .body(userDao.delete(id));
     }
 
     @DeleteMapping("/user/all")
-    public void deleteUserAll(){
-        userDao.deleteAll();
+    public ResponseEntity<Integer> deleteUserAll() {
+        return ResponseEntity
+                .ok()
+                .body(userDao.deleteAll());
     }
 
 }
