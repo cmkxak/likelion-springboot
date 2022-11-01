@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @AllArgsConstructor
 @Getter
@@ -28,7 +27,7 @@ public class Hospital {
     private String businessTypeName;
     private int healthcareProviderCount;
     private int patientRoomCount;
-    private int totalNumberofBeds;
+    private int totalNumberOfBeds;
     private float totalAreaSize;
 
 }

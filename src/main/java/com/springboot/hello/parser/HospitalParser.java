@@ -3,7 +3,6 @@ package com.springboot.hello.parser;
 import com.springboot.hello.domain.Hospital;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 public class HospitalParser implements Parser<Hospital> {
     @Override
@@ -30,7 +29,7 @@ public class HospitalParser implements Parser<Hospital> {
         hospital.setBusinessTypeName(row[25]);
         hospital.setHealthcareProviderCount(Integer.parseInt(row[29]));
         hospital.setPatientRoomCount(Integer.parseInt(row[30]));
-        hospital.setTotalNumberofBeds(Integer.parseInt(row[31]));
+        hospital.setTotalNumberOfBeds(Integer.parseInt(row[31]));
         hospital.setTotalAreaSize(Float.parseFloat(row[32]));
 
         return hospital;
