@@ -18,7 +18,11 @@ public class ReadLineContext<T> {
         BufferedReader reader = new BufferedReader(new FileReader(filename));
         String str;
         while ((str = reader.readLine()) != null) {
-            result.add(parser.parse(str));
+            try {
+                result.add(parser.parse(str));
+            } catch (Exception e) {
+                System.out.printf("파싱 중 문제가 생격 이 라인은 넘어갑니다. 파일내용 :%s", str);
+            }
         }
         reader.close();
         return result;
