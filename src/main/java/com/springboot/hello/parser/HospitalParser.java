@@ -3,14 +3,14 @@ package com.springboot.hello.parser;
 import com.springboot.hello.domain.Hospital;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class HospitalParser implements Parser<Hospital> {
     @Override
     public Hospital parse(String str) {
-        String[] row = str.split("\", \"");
+        String[] row = str.split("\",\"");
 
         Hospital hospital = new Hospital();
-
         hospital.setId(Integer.parseInt(row[0].replace("\"", "")));
         hospital.setOpenServiceName(row[1]);
         hospital.setOpenLocalGovernmentCode(Integer.parseInt(row[3]));
@@ -31,7 +31,7 @@ public class HospitalParser implements Parser<Hospital> {
         hospital.setHealthcareProviderCount(Integer.parseInt(row[29]));
         hospital.setPatientRoomCount(Integer.parseInt(row[30]));
         hospital.setTotalNumberofBeds(Integer.parseInt(row[31]));
-        hospital.setTotalAreaSize(Float.parseFloat(row[32].replace("\"", "")));
+        hospital.setTotalAreaSize(Float.parseFloat(row[32]));
 
         return hospital;
     }
