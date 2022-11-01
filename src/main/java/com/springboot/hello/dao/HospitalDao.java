@@ -2,7 +2,9 @@ package com.springboot.hello.dao;
 
 import com.springboot.hello.domain.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HospitalDao {
     private final JdbcTemplate jdbcTemplate;
 
@@ -16,7 +18,7 @@ public class HospitalDao {
                 + "`total_number_of_beds`, `total_area_size`)" +
                 "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        this.jdbcTemplate.update(sql, hospital.getId(), hospital.getOpenServiceName(), hospital.getOpenLocalGovermentCode(),
+        this.jdbcTemplate.update(sql, hospital.getId(), hospital.getOpenServiceName(), hospital.getOpenLocalGovernmentCode(),
                 hospital.getManagementNumber(), hospital.getLicenseDate(), hospital.getBusinessStatus(), hospital.getBusinessStatusCode(), hospital.getPhone(), hospital.getFullAddress(),
                 hospital.getRoadNameAddress(), hospital.getHospitalName(), hospital.getBusinessTypeName(), hospital.getHealthcareProviderCount(),
                 hospital.getPatientRoomCount(), hospital.getTotalNumberofBeds(), hospital.getTotalAreaSize());

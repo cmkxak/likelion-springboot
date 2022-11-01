@@ -16,7 +16,7 @@ import java.util.Date;
 public class Hospital {
     private int id;
     private String openServiceName;
-    private int openLocalGovermentCode;
+    private int openLocalGovernmentCode;
     private String managementNumber;
     private LocalDateTime licenseDate;
     private int businessStatus;

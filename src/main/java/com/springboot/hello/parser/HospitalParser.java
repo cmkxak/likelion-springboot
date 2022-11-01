@@ -10,9 +10,10 @@ public class HospitalParser implements Parser<Hospital> {
         String[] row = str.split("\", \"");
 
         Hospital hospital = new Hospital();
+
         hospital.setId(Integer.parseInt(row[0].replace("\"", "")));
         hospital.setOpenServiceName(row[1]);
-        hospital.setOpenLocalGovermentCode(Integer.parseInt(row[3]));
+        hospital.setOpenLocalGovernmentCode(Integer.parseInt(row[3]));
         hospital.setManagementNumber(row[4]);
 
         int year = Integer.parseInt(row[5].substring(0, 4));
