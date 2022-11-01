@@ -46,7 +46,7 @@ class HospitalParserTest {
         assertEquals("치과의원", hospital.getBusinessTypeName());
         assertEquals(1, hospital.getHealthcareProviderCount());
         assertEquals(0, hospital.getPatientRoomCount());
-        assertEquals(0, hospital.getTotalNumberofBeds());
+        assertEquals(0, hospital.getTotalNumberOfBeds());
         assertEquals(52.29f, hospital.getTotalAreaSize());
     }
 
@@ -65,10 +65,24 @@ class HospitalParserTest {
     }
 
     @Test
-    @DisplayName("add 테스트")
+    @DisplayName("add, deleteAll, getCount, findById 테스트 <단, 레코드가 하나 이상 들어갔을 때 테스트가 정상 동작>")
     void addTest() {
+
         HospitalParser hp = new HospitalParser();
-        Hospital parsedHospital = hp.parse(line1);
-        hospitalDao.add(parsedHospital);
+        Hospital hospital = hp.parse(line1);
+
+        hospitalDao.deleteAll();
+        assertEquals(0, hospitalDao.getCount());
+
+        hospitalDao.add(hospital);
+        assertEquals(1, hospitalDao.getCount());
+
+        //db에 저장된 Hospital Object를 id값으로 찾아온다.
+        Hospital savedHospital = hospitalDao.findById(hospital.getId());
+
+        assertEquals(savedHospital.getId(), hospital.getId());
+        assertEquals(savedHospital.getOpenServiceName(), hospital.getOpenServiceName());
+        assertEquals(savedHospital.getHospitalName(), hospital.getHospitalName());
     }
+
 }
